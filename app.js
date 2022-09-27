@@ -95,9 +95,15 @@ document.querySelector(".decimal").onclick = () => {
   if (altY.includes(".")) {
     return;
   } else {
-    altY=0
-    altY = altY + ".";
-    altEkran.textContent = altY;
+    if(altY==''){
+      altY=0
+      altY = altY + ".";
+      altEkran.textContent = altY;
+    }
+    else{
+      altY = altY + ".";
+      altEkran.textContent = altY;
+    }
   }
 };
 
