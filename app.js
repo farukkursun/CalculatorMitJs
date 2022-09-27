@@ -26,7 +26,7 @@ document.querySelectorAll(".num").forEach(
       if (altY && hesap == true) {
         altY = altY + a.textContent;
       } else {
-        if (a.textContent == 0 ) return;
+        if (a.textContent == 0) return;
         else {
           hesap = true;
           altY = a.textContent;
@@ -92,17 +92,19 @@ document.querySelector(".pm").onclick = () => {
 
 // ikinci '.' engeleme
 document.querySelector(".decimal").onclick = () => {
+  
   if (altY.includes(".")) {
     return;
   } else {
-    if(altY==''){
-      altY=0
+    if (altY == "") {
+      hesap= true
+      altY = 0;
       altY = altY + ".";
       altEkran.textContent = altY;
-    }
-    else{
+    } else {
       altY = altY + ".";
       altEkran.textContent = altY;
+      
     }
   }
 };
@@ -119,3 +121,17 @@ document.querySelector(".decimal").onclick = () => {
 //   hesap = true;
 //   altY = a.textContent;
 // }
+// document.querySelector(".decimal").onclick = () => {
+//   if (altY.includes(".")) {
+//     return;
+//   } else {
+//     if (altY == "" || üstY != "" || hesap == true) {
+//       altY = 0;
+//       altY = altY + ".";
+//       altEkran.textContent = altY;
+//     } else {
+//       altY = altY + ".";
+//       altEkran.textContent = altY;
+//     }
+//   }
+// };
