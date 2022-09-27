@@ -11,7 +11,7 @@ const hesapla = (üstY, islem, altY) => {
   else if (islem == "-") sonuc = üstY - altY;
   else if (islem == "x") sonuc = üstY * altY;
   else if (islem == "÷") {
-    if (altY != 0) sonuc = üstY / altY;
+    if (altY != 0) sonuc = (üstY / altY).toFixed(2);
     else sonuc = "hatali rakam girdiniz";
   } else sonuc = "hatali islem girdiniz";
   return sonuc;
