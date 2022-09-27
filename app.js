@@ -3,10 +3,11 @@ let üstEkran = document.querySelector(".previous-display");
 let altY = "";
 let üstY = "";
 let islem = "";
+let hesap = true;
 
 // hesapla foncionu
 const hesapla = (üstY, islem, altY) => {
-  if (islem == "+") sonuc = üstY + altY;
+  if (islem == "+") sonuc = Number(üstY) + Number(altY);
   else if (islem == "-") sonuc = üstY - altY;
   else if (islem == "x") sonuc = üstY * altY;
   else if (islem == "÷") {
@@ -18,41 +19,60 @@ const hesapla = (üstY, islem, altY) => {
 
 // console.log(hesapla(10, "+", 2));
 
-// console.log(yüzde(8));
-
 // num basinca
 document.querySelectorAll(".num").forEach(
   (a) =>
     (a.onclick = () => {
-      if (altY == "") {
-        altY = a.textContent;
-      } else {
+      if (altY && hesap == true) {
         altY = altY + a.textContent;
+      } else {
+        if (a.textContent == 0 ) return;
+        else {
+          hesap = true;
+          altY = a.textContent;
+        }
       }
 
-      altY = Number(altY);
-      //   console.log(typeof(altY));
-      altEkran.textContent = altY;
+      // sayilar number e cevrildigi icin 0 i birkez basiyor
+
+      if (altY.length > 9) {
+        altEkran.textContent = altY.slice(0, 9);
+      } else {
+        altEkran.textContent = altY;
+      }
 
       document.querySelectorAll(".operator").forEach(
-        (islem) =>
-          (islem.onclick = () => {
-            islem = islem.textContent;
-            üstY = altY;
-            altY = "";
-            üstEkran.textContent = üstY + islem;
-            altEkran.textContent = "";
-
-            document.querySelector(".equal").onclick = () => {
+        (op) =>
+          (op.onclick = () => {
+            if (altY && üstY) {
               altEkran.textContent = hesapla(üstY, islem, altY);
               üstEkran.textContent = "";
-              altY = hesapla(üstY, islem, altY);;
-              üstY='';
-            };
+              altY = hesapla(üstY, islem, altY);
+              üstY = "";
+              islem = op.textContent;
+              üstY = altY;
+              altY = "";
+              üstEkran.textContent = üstY + islem;
+              altEkran.textContent = "";
+            } else {
+              islem = op.textContent;
+              üstY = altY;
+              altY = "";
+              üstEkran.textContent = üstY + islem;
+              altEkran.textContent = "";
+            }
           })
       );
     })
 );
+
+document.querySelector(".equal").onclick = () => {
+  hesap = false;
+  altEkran.textContent = hesapla(üstY, islem, altY);
+  üstEkran.textContent = "";
+  altY = hesapla(üstY, islem, altY);
+  üstY = "";
+};
 
 document.querySelector(".ac").onclick = () => {
   altY = "";
@@ -70,27 +90,26 @@ document.querySelector(".pm").onclick = () => {
   altEkran.textContent = altY;
 };
 
-
-// ikinci '.' engelemem lazim
+// ikinci '.' engeleme
 document.querySelector(".decimal").onclick = () => {
-   
+  if (altY.includes(".")) {
+    return;
+  } else {
+    altY=0
     altY = altY + ".";
     altEkran.textContent = altY;
-     console.log(!altY.includes("."));
-   
-  
-  console.log(typeof altY);
+  }
 };
 
-//  if (üstEkran.textContent != "") {
-//    üstY = hesapla(üstY, islem, altY);
-
-//    üstEkran.textContent = üstY + islem;
-//    altY = "";
-//    altEkran.textContent = "";
+//  if (altY.length > 9) {
+//    altEkran.textContent = Number(altY.slice(0, 9));
 //  } else {
-//    üstY = altY;
-//    altY = "";
-//    üstEkran.textContent = üstY + islem;
-//    altEkran.textContent = "";
+//    altEkran.textContent = Number(altY);
 //  }
+
+// if (altY && hesap == true) {
+//   altY = altY + a.textContent;
+// } else {
+//   hesap = true;
+//   altY = a.textContent;
+// }
