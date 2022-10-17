@@ -109,29 +109,3 @@ document.querySelector(".decimal").onclick = () => {
   }
 };
 
-//  if (altY.length > 9) {
-//    altEkran.textContent = Number(altY.slice(0, 9));
-//  } else {
-//    altEkran.textContent = Number(altY);
-//  }
-
-// if (altY && hesap == true) {
-//   altY = altY + a.textContent;
-// } else {
-//   hesap = true;
-//   altY = a.textContent;
-// }
-// document.querySelector(".decimal").onclick = () => {
-//   if (altY.includes(".")) {
-//     return;
-//   } else {
-//     if (altY == "" || üstY != "" || hesap == true) {
-//       altY = 0;
-//       altY = altY + ".";
-//       altEkran.textContent = altY;
-//     } else {
-//       altY = altY + ".";
-//       altEkran.textContent = altY;
-//     }
-//   }
-// };
