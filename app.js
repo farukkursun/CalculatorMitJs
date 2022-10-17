@@ -17,7 +17,7 @@ const hesapla = (üstY, islem, altY) => {
   return sonuc;
 };
 
-// console.log(hesapla(10, "+", 2));
+
 
 // num basinca
 document.querySelectorAll(".num").forEach(
@@ -33,7 +33,7 @@ document.querySelectorAll(".num").forEach(
         }
       }
 
-      // sayilar number e cevrildigi icin 0 i birkez basiyor
+      
 
       if (altY.length > 9) {
         altEkran.textContent = altY.slice(0, 9);
